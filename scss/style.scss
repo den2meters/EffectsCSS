@@ -1,0 +1,287 @@
+@import "_nullstyle";
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+
+.wrapper {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: repeat(10, 1fr);
+   gap: 10px;
+   background-color: rgb(255, 175, 175);
+}
+
+.container {
+   max-width: 1440px;
+   margin: 0px auto;
+}
+
+.page {
+
+   &__vertical-menu-1 {
+      background-color: rgb(56, 56, 56);
+      font-family: DynaPuff;
+      overflow: hidden;
+   }
+
+      &__vertical-menu-2 {
+         background-color: rgb(56, 56, 56);
+      }
+}
+
+//============= vertical-menu-1 =============//
+
+.vertical-menu-1 {
+
+   &__container {}
+
+   &__body {
+      padding: 50px 50px;
+   }
+
+   &__border {
+      padding: 10px;
+      display: inline-block;
+      border-radius: 45px;
+      background-color: rgb(255, 0, 0);
+      transition: all 0.3s ease-in-out;
+   }
+
+   &__menu {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      background-color: rgb(255, 255, 255);
+      padding: 20px;
+      border-radius: 35px;
+      position: relative;
+   }
+
+   &__item {
+      position: relative;
+      &:not(:last-child){
+         margin: 0px 0px 30px 0px;
+      }
+   }
+
+   &__icon {
+      font-size: 35px;
+      position: relative;
+      z-index: 2;
+   }
+
+   
+
+   &__text {
+      position: absolute;
+      top: -10px;
+      left: 80px;
+      background-color: #fff;
+      color: rgb(0, 0, 0);
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 30px;
+      transition: all 0.5s ease-in-out;
+      opacity: 0;
+      visibility: hidden;
+      &::before{
+         content: "";
+         width: 15px;
+         height: 15px;
+         background-color: rgb(255, 255, 255);
+         position: absolute;
+         top: 50%;
+         left: 0;
+         transform: translate(-50%, -50%) rotate(45deg);
+      }
+      &:hover {
+         text-decoration: underline;
+      }
+   }
+
+   &__text-active {
+      transition: all 0.15s ease-in-out;
+      opacity: 1;
+      visibility: visible;
+   }
+
+   &__back {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      background-color: red;
+      border-radius: 50%;
+      transform: translate(-50%, 0px);
+      z-index: 1;
+      transition: all 0.3s ease-in-out;
+   }
+}
+
+//============= vertical-menu-2 =============//
+
+.vertical-menu-2 {
+
+   &__container { 
+      min-height: 100%;
+      margin: 0px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     }
+
+   &__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 40px;
+      border: 1px solid white;
+      color: #fff;
+      background-color: rgb(0, 0, 0);
+      position: relative;
+      transition: all 0.5s ease-in-out;
+      &:not(:last-child) {
+         margin: 0px 0px 50px 0px;
+      }
+      &::after {
+         content: "";
+         position: absolute;
+         left: -5px;
+         top: -5px;
+         width: 10px;
+         height: 10px;
+         background-color: rgb(0, 0, 0);
+         border: 1px solid white;
+         transition: all 0.5s ease-in-out;
+      }
+      &::before {
+         content: "";
+         position: absolute;
+         right: -5px;
+         bottom: -5px;
+         width: 10px;
+         height: 10px;
+         background-color: rgb(0, 0, 0);
+         border: 1px solid white;
+         transition: all 0.5s ease-in-out;
+      }
+      &:hover {
+         
+         &::after {
+            transform: translate(100px, 0) rotate( 315deg);
+         }
+         &::before {
+            transform: translate(-100px, 0) rotate(315deg);
+         }
+      }
+   }
+
+   &__inside-top {
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+   }
+
+   &__inside-bottom {
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+   }
+}
+
+.button-red {
+   transition: all 0.5s ease-in-out;
+   &:hover {
+      color: rgb(255, 0, 0);
+      border: 1px solid rgb(255, 0, 0);
+      box-shadow: 0px 0px 25px 2px rgb(255, 0, 0);
+      .vertical-menu-2__inside-top {
+         opacity: 1;
+         background-color: rgb(255, 0, 0);
+         transform: translate(55px, 15px) rotate(315deg);
+      }
+   
+      .vertical-menu-2__inside-bottom {
+         opacity: 1;
+         background-color: rgb(255, 0, 0);
+         transform: translate(-55px, -15px) rotate(315deg);
+      }
+      &::after {
+         border: 1px solid rgb(255, 0, 0);
+      }
+
+      &::before {
+         border: 1px solid rgb(255, 0, 0);
+      }
+   }
+}
+
+.button-yellow {
+   &:hover {
+      color: rgb(255, 236, 68);
+      border: 1px solid rgb(255, 236, 68);
+      box-shadow: 0px 0px 25px 2px rgb(255, 236, 68);
+      .vertical-menu-2__inside-top {
+         opacity: 1;
+         background-color: rgb(255, 236, 68);
+         transform: translate(54px, 14px) rotate(315deg);
+      }
+
+      .vertical-menu-2__inside-bottom {
+         opacity: 1;
+         background-color: rgb(255, 236, 68);
+         transform: translate(-54px, -14px) rotate(315deg);
+      }
+
+      &::after {
+         border: 1px solid rgb(255, 236, 68);
+      }
+
+      &::before {
+         border: 1px solid rgb(255, 236, 68);
+      }
+   }
+}
+
+.button-green {
+   &:hover {
+      color: rgb(32, 172, 4);
+      border: 1px solid rgb(32, 172, 4);
+      box-shadow: 0px 0px 25px 2px rgb(32, 172, 4);
+      .vertical-menu-2__inside-top {
+         opacity: 1;
+         background-color: rgb(32, 172, 4);
+         transform: translate(54px, 14px) rotate(315deg);
+      }
+
+      .vertical-menu-2__inside-bottom {
+         opacity: 1;
+         background-color: rgb(32, 172, 4);
+         transform: translate(-54px, -14px) rotate(315deg);
+      }
+
+      &::after {
+         border: 1px solid rgb(32, 172, 4);
+      }
+
+      &::before {
+         border: 1px solid rgb(32, 172, 4);
+      }
+   }
+}
